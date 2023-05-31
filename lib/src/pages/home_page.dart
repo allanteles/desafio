@@ -1,4 +1,5 @@
 import 'package:desafio/src/controller/home_controller.dart';
+import 'package:desafio/src/service/strong_password_service_impl.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var passwords = ['#forTe1', 'senhafraca', 'Qu@s1', 'Voce@Consegue!2023'];
 
-  var controller = HomeController();
+  var controller = HomeController(service: StrongPasswordServiceImpl());
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               trailing: Visibility(
                 visible: controller.isStrongPassword(passwords[index]),
                 replacement: const Icon(
-                  Icons.cancel,
+                  Icons.cancel_outlined,
                   color: Colors.red,
                 ),
                 child: const Icon(
